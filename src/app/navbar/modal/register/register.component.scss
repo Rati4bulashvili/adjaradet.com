@@ -1,0 +1,86 @@
+$green: #01AC2D; 
+
+.register{
+
+    min-width: 308px;
+    
+    &__header{
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        word-spacing: 5px;
+        text-align: center;
+    }
+
+    &__form{
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        &__username-input, &__email-input, &__password-input{
+            padding: 6px 17px;
+            border-radius: 8px;
+            border: none;
+            margin: 4px 0px;
+            font-size: 18px;
+
+            &:focus{
+                border: none;
+                outline: none;
+            }
+        }
+
+        &__username-validity{
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        &__btn-wrapper{
+            display: flex;
+            justify-content: space-between;
+
+            &__submit{
+                background-color: $green;
+                color: white;
+                padding: 7px 13px;
+                border-radius: 10px;
+                cursor: pointer;
+                &:focus{
+                    border: none;
+                    outline: none;
+                }
+
+                &:disabled{
+                    background-color: red;
+                }
+            }
+
+            &__cancel{
+                background-color: gray;
+                color: white;
+                padding: 7px 13px;
+                border-radius: 10px;
+                cursor: pointer;
+                &:focus{
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+input.ng-invalid.ng-touched{
+border: 1px solid red;
+}
+
+.valid{
+    cursor: pointer;
+    background-color: green;
+}
+
+.invalid{
+    cursor: not-allowed;
+    background-color: red;
+    border: none;
+}

@@ -1,0 +1,35 @@
+$green: #01AC2D; 
+$dark1: rgba(29,35,41,255);
+
+.message{
+    position: fixed;
+    bottom: 50px;
+    left: 30px;
+    background-color: $dark1;
+    opacity: 0.95;
+    padding: 10px 20px;
+    font-size: 19px;
+    font-weight: bold;
+    transition-duration: 1s;
+    z-index: 10;
+
+    @media screen and (max-width: 600px){
+        font-size: 15px;
+        padding: 7px 15px;
+    }
+    @media screen and (max-width: 450px){
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+
+.error{
+    border: 1px solid red;
+    text-shadow: 2px 2px red, 2px 0px red;
+}
+
+.not-error{
+    border: 1px solid green;
+    text-shadow: 2px 2px green, 2px 0px green;
+}
+

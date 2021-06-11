@@ -1,0 +1,8 @@
+<div class="message" #messageElem
+[ngClass]="{'error': messageData?.error, 'not-error': !messageData?.error}"
+[@messageState]='state'
+>
+{{messageData?.message | translate}}
+</div>
+
+<ng-content></ng-content>

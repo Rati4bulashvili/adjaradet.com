@@ -1,0 +1,14 @@
+<div class="bet-details">
+    <div class="bet-details__bet-amount">
+        {{'inputYourBet' | translate}}
+        <input [disabled]='!inputCanBeFilled' #inputBet min='0' (input)='calculatePossWin(inputBet, matches)' placeholder="$" class='bet-details__bet-amount__input' type="number">
+    </div>
+    <div class="bet-details__info">
+        <div class="bet-details__info__odd">{{'odd' | translate}}: {{odd}}</div>
+        <div class="bet-details__info__win">{{'possWin' | translate}}: {{betInfo?.possWin}}$</div>
+    </div>
+    <div *ngIf='!authData?.email' class="bet-details__reminder">*{{'notLoggedInWarning' | translate}}</div>
+    <button [disabled]='!betInfo?.betCanBePlaced || !authData?.email' (click)='placeBet(inputBet)' class="bet-details__place-bet">{{'placeBet' | translate}}</button>
+
+</div>
+

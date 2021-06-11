@@ -1,0 +1,82 @@
+
+// slider was copied and stolen :)
+.slider{
+
+  @media only screen and (max-width: 768px){
+    height: 550px;
+  }
+  @media only screen and (max-width: 1100px){
+    width: 100%;
+    height: 100%;
+  }
+  @media only screen and(max-width:425px){
+    top: 0;
+    right: 0px;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  overflow: hidden;
+  width: 1000px;
+  height: 550px;
+  margin: 20px auto;
+
+}
+
+.bar:hover{
+  background: #fff;
+}
+input[name="r"]{
+  display: none;  
+}
+
+.slides{
+  width: 400%;
+  height: 100%;
+  display: flex;
+}
+
+.slide{
+  width: 25%;
+  transition: 0.6s;
+}
+
+.slide img{
+  width: 100%;
+  height: 100%;
+}
+
+#r1:checked ~ .s1{
+  margin-left: 0;
+}
+#r2:checked ~ .s1{
+  margin-left: -25%;
+}
+#r3:checked ~ .s1{
+  margin-left: -50%;
+}
+#r4:checked ~ .s1{
+  margin-left: -75%;
+}
+
+.bar{
+  width: 50px;
+  height: 10px;
+  border: 2px solid #fff;
+  margin: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  @media screen and (max-width: 610px) {
+    width: 35px;
+    height: 8px;
+    border: 1px solid white;
+  }
+}
+
+.navigation{
+  left: 50%;
+  transform: translate(-50%);
+  position: absolute;
+  display: flex;
+  z-index: 1;
+}

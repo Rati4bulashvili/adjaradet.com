@@ -1,0 +1,16 @@
+<div class="wrapper">
+
+    <div class="wrapper__name">
+        {{match.home | translate | uppercase}} VS {{match.away | translate | uppercase}}
+    </div> 
+    <button (click)='removeMatch()' class="wrapper__delete">x</button>
+</div>
+
+<div class="wrapper">
+    <div class="wrapper__betting-on">
+        {{match.bettingOn | translate}} 
+    </div>
+    <div class="wrapper__odd">
+        {{odd}}                
+    </div> 
+</div>

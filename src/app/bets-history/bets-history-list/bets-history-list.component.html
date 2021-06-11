@@ -1,0 +1,4 @@
+<h1 *ngIf='betsHistory?.length === 0' class="no-bets">{{'noBets' | translate}} 😕</h1>
+    <div class="list__bets" *ngFor='let bet of betsHistory'>
+        <app-bets-history-item [bet]='bet'></app-bets-history-item>
+    </div>

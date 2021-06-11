@@ -1,0 +1,31 @@
+$yellow: #ffd206;
+
+.odds{
+    &__home, &__away{
+        background-color: rgba(42,50,55,255);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        
+        @media screen and (max-width: 500px) {
+            font-size: 13px;
+            padding: 8px 10px;
+        }
+        @media screen and (max-width: 400px) {
+            font-size: 10px;
+            padding: 8px 6px;
+        }
+    }
+
+    &__away{
+        margin-right: 10px;
+    }
+}
+
+.added-bet{
+    color: $yellow;
+}

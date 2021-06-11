@@ -1,0 +1,55 @@
+$dark2: rgba(32,40,48,255);
+$dark1: rgba(29,35,41,255);
+$border: rgba(43,52,60,255); 
+$green: #01AC2D; 
+
+.sportsbook{
+    display: flex;
+    justify-content: center;
+
+    @media screen and (max-width: 1430px) {
+        flex-direction: column;
+    }
+
+    app-ticket{
+        width: 30%;
+
+        @media screen and (max-width: 1430px) {
+            width: 100%;
+            display: flex;
+        }
+    }
+
+    &__list{
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        @media screen and (max-width: 1430px) {
+            width: 100%;
+        }
+
+        background-color: $dark2;
+
+        &__container{
+            &__loader{
+                border: 14px solid $border;
+                border-radius: 50%;
+                border-top: 14px solid $green;
+                border-bottom: 14px solid $green;
+                width: 90px;
+                height: 90px;
+                -webkit-animation: spin 2s linear infinite;
+                animation: spin 2s linear infinite;
+                margin: auto;
+            }
+            
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        }
+    }
+}
+

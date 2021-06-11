@@ -1,0 +1,305 @@
+$dark1: rgba(29,35,41,255);
+$green: #01AC2D; 
+$dark2: rgba(45,53,63,255);
+
+.navbar{
+    background-color: $dark1; 
+    display: flex;
+    align-items: center;
+    padding: 10px 80px;
+    
+    @media screen and (max-width: 1260px) {
+        padding: 6px 10px;
+    }
+    @media screen and (max-width: 0px) {
+    }
+
+    .logo{
+        @media screen and (max-width: 750px) {
+            order: 1;
+        }   
+        @media screen and (max-width: 501px) {
+            display: none;
+        }
+    }
+    
+    .mini-logo{
+       display: block;
+        padding: auto;
+        @media screen and (min-width: 500px) {
+            display: none;
+        }
+    }
+
+    .my-bets{
+        order: 2;
+    }
+    .sports{
+        order: 3;
+    }
+
+    &__item{
+        font-weight: bold;
+        margin: 0px 15px;
+        font-size: 17px;
+        @media screen and (max-width: 1090px) {
+            font-size: 14px;
+        }
+        @media screen and (max-width: 750px) {
+            margin: auto;
+        }
+        @media screen and (max-width: 500px) {
+            font-size: 11px;
+        }    
+
+        &__link{
+            transition: color 0.3s;
+            &:hover{
+                color: #ccc;
+            }
+        }
+        
+        &__logo{
+            width: 250px;
+            margin-top: 4px;
+            @media screen and (max-width: 1260px) {
+                width: 200px;
+            }
+            @media screen and (max-width: 1090px) {
+                width: 160px;
+            }
+            @media screen and (max-width: 1020px) {
+                width: 130px;
+            }
+        }
+        &__mini-logo{
+            width: 25px;
+            margin-top: 2px;
+        }
+
+        &__account{
+            margin-left: auto;
+            display: flex;
+            order: 4;
+            align-items: center;
+
+            &__switch-btn{
+                @media screen and (max-width: 750px) {
+                    display: none;
+                }
+            }
+
+            &__language-select{
+                color: white;
+                background-color: $dark1;
+                padding: 4px;
+            }
+
+            &__balance{
+                font-weight: bold;
+                margin-left: 10px;
+                color: $green;
+                text-decoration: underline;
+                @media screen and (max-width: 920px) {
+                    display: none;
+                }
+            }
+            
+            &__dropdown {
+                cursor: pointer;
+                text-decoration: underline;
+                margin-left: 10px;
+                
+                @media screen and (min-width: 751px) {
+                    display: none;
+                }
+                
+                &__name{
+                    display: flex;
+                    align-items: center;
+                    font-weight: bold;
+                    font-size: 14px;
+                    @media screen and (max-width: 500px) {
+                        font-size: 11px;
+                    }    
+                    
+                    img{
+                        width: 20px;
+                    }
+                }
+                
+                &:hover &__dropdown-content {
+                    display: block;
+                }
+                
+                &__dropdown-content {
+                    border-radius: 3px;
+                    display: none;
+                    position: absolute; 
+                    right: 10px;
+                    background-color: $dark1;
+                    padding-top: 5px;
+                    z-index: 1;
+                    min-width: 100px;
+
+                    &__item{
+                        padding: 8px 0px;
+                        text-align: center;
+                        width: 100%;
+                        transition-duration: 0.3s;
+                        background-color: $dark1;
+                        color: white;
+                        outline: none;
+                        border: none;
+                        display: block;
+                        padding: 5px 15px;
+                        cursor: pointer;
+
+                        @media screen and (max-width: 500px) {
+                            font-size: 11px;
+                            margin: 3px 0px;
+                            padding: 5px 10px;
+                        }    
+
+                        &:hover{
+                            color: $green
+                        }
+
+                        &--log-out{
+                            &:hover{
+                                color: red;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &__log-in, &__register, &__log-out, &__info{
+
+                cursor: pointer;
+                font-weight: bold;
+                color: white;
+                background-color: $green;
+                outline: none;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                display: flex;
+                justify-self: flex-end;
+                margin: 0px 15px;
+                
+                @media screen and (max-width: 1260px) {
+                    padding: 8px 13px;
+                    font-size: 15px;
+                }
+                @media screen and (max-width: 1020px) {
+                    padding: 6px 11px;
+                    font-size: 14px;
+                    margin: 0px 7px;
+                }
+                @media screen and (max-width: 750px) {
+                    display: none;
+                }
+
+            }
+
+            &__register, &__info{
+                background-color: #323d49;
+            }
+            &__log-out{
+                background-color: red;
+                margin-left: 10px;
+            }
+            &__log-in{
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.switch-button {
+    background: $dark2;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 80px;
+    font-size: 14px;
+    padding-right: 25px;
+    position: relative;
+    height: 30px;
+    margin: 8px auto;
+    text-align: center;      
+
+    .switch-button-checkbox{
+        width: 80px;
+    }
+  
+    &:before {
+      content: "Geo";
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      pointer-events: none;
+      height: 30px;
+    }
+  
+    &-checkbox {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      height: 30px;;
+      opacity: 0;
+  
+      &:checked + .switch-button-label:before {
+        transform: translateX(40px);
+        transition: transform 300ms linear;
+      }
+
+      & + .switch-button-label {
+        position: relative;
+        display: block;
+        user-select: none;
+        pointer-events: none;
+  
+        &:before {
+          content: "";
+          background: $green;
+          height: 100%;
+          width: 40px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          border-radius: 30px;
+          transform: translateX(0);
+          transition: transform 300ms;
+          height: 30px;;
+
+        }
+        
+      }
+    }
+
+    .switch-button-label{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .switch-button-label-span{
+      color: white;
+      padding-left: 7px;
+      z-index: 1;
+      font-weight: bold;
+    }
+}

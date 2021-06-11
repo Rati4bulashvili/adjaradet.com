@@ -1,0 +1,16 @@
+$dark2: rgba(32,40,48,255);
+$dark1: rgba(29,35,41,255);
+
+.history{
+    background-color: $dark2;
+    min-height: 500px;
+    
+    &__header{
+        background-color: $dark1;
+        display: flex;
+        @media screen and (max-width: 1260px){
+            justify-content: center;
+        }
+    }
+}
+

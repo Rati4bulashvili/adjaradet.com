@@ -1,0 +1,132 @@
+$green: #01AC2D; 
+$dark2: rgba(32,40,48,255);
+
+.header{
+    margin-bottom: 40px;
+    background-color: $dark2;
+    color: $green;
+    width: 100%;
+    text-align: center;
+    padding: 13px;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    word-spacing: 9px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    background-color: $green;
+    width: max-content;
+    border-radius: 12px;
+    padding: 10px 18px;
+    margin: auto;
+
+    @media only screen and (max-width: 425px) {
+    }
+    
+    &__username, &__email, &__password, &__balance{
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 3px;
+        color: white;
+        word-spacing: 8px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width: 425px) {
+            font-size: 20px;
+            word-spacing: unset;
+            letter-spacing: unset;
+            margin: 10px 0px;
+        }
+    }
+
+    &__wrapper{
+        display: flex;
+        align-self: flex-end;
+        align-items: center;
+
+        @media only screen and (max-width: 370px) {
+            flex-direction: column;
+            align-self: center;
+        }
+
+        &__input-label{
+            @extend .info__email;
+            margin-right: 25px;
+        }
+
+        &__input-balance, &__input-submit{
+            font-size: 19px;
+            border-radius: 0px;
+            border: none;
+            outline: none;
+            font-weight: bold;
+            padding: 4px 5px;
+        }
+
+        &__input-balance{
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            max-width: 70px;
+        }
+        
+        &__input-submit{
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+    }
+    
+    &__password{
+        
+        &__input{
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: default;
+            max-width: 120px;
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        &__toggle-visibility{
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            
+            img{
+                vertical-align: middle;
+                width: 33px;
+            }
+        }
+    }
+
+    &__logo{
+        display: flex;
+        justify-content: space-around;
+
+        &__name{
+            @extend .info__email;
+            color: black;
+        }
+    }
+}
+
+.disabled{
+    color: gray;
+    cursor: not-allowed;
+}
+
+.active{
+    color: white;
+    cursor: pointer;
+}
