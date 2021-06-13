@@ -1,0 +1,38 @@
+{
+  "sport": "SPORT",
+  "myBets": "MY BETS",
+  "balance": "Balance",
+  "logOut": "Log out",
+  "logIn": "Log in",
+  "register": "Register",
+  "account": "Account",
+
+  "betsHistory": "BETS HISTORY",
+  "viewMatches": "VIEW MATCHES",
+  "odd": "ODD",
+  "bet": "BET",
+  "bets": "bets",
+  "possWin": "POSSIBLE WIN",
+
+  "home": "HOME",
+  "away": "AWAY",
+  "betSlip": "BET SLIP",
+  "matches": "matches",
+  "inputYourBet": "INPUT YOUR BET",
+  "placeBet": "PLACE BET",
+  "noBets": "THERE ARE NO BETS TO DISPLAY",
+  "notLoggedInWarning": "you have to be logged in to place a bet",
+
+  "yourAccountInfo": "YOUR ACCOUNT INFO",
+  "password": "PASSWORD",
+  "inputMoney": "Input Money",
+  "submit": "Submit",
+  "emailUPPERCASE": "EMAIL",
+
+  "repeatPassword": "Repeat Password",
+
+  "mailWarning": "please input valid email",
+  "passwordWarning": "please input password (min 6 characters)",
+  "passwordWarningShort": "please input password",
+  "passwordsDontMatchWarning": "passwords don't match"
+}
