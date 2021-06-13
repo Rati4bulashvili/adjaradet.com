@@ -1,0 +1,122 @@
+$border: rgba(43,52,60,255); 
+
+.bet{
+  width: 100%;
+  padding: 11px 70px;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid $border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__tooltip{
+    position: relative;
+    border-bottom: 1px dotted white;
+    cursor: pointer;
+
+    @media screen and (max-width: 375px) {
+        padding: 0px;
+        font-size: 11px;
+        background: none;
+        min-width: unset;
+    }
+    
+    &:hover &__matches-info{
+        visibility: visible;
+    }
+    
+    &__matches-info{
+        visibility: hidden;
+        height: unset;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -20px;
+        left: 110%;
+        padding: 10px;
+        
+        &__details{
+            white-space: nowrap;
+        }
+    }
+  }
+
+  &:hover{
+    background-color: rgba(37,45,55,255);
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 800px) {
+    font-size: 14px;
+    padding: 10px 10px;
+  }
+
+  &__bet-info{
+    display: flex;
+
+    &__odd, &__poss-win, &__bet-amount{
+        background-color: rgba(42,50,55,255);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        margin-left: 15px;
+        max-width: 170px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        
+        @media screen and (max-width: 800px) {
+            font-size: 12px;
+            padding: 8px 8px;
+        }
+    }
+
+    &__poss-win{
+        @media screen and (max-width: 800px) {
+            min-width: 150px;
+        }
+        @media screen and (max-width: 375px) {
+            padding: 0px;
+            margin-right: 5px;
+            font-size: 11px;
+            background: none;
+            min-width: unset;
+        }
+    }
+    
+    &__odd{
+        @media screen and (min-width: 801px) {
+            min-width: 125px;
+        }
+        @media screen and (max-width: 800px) {
+            min-width: 83px;
+        }
+        @media screen and (max-width: 570px) {
+            display: none;
+        }
+    }
+    &__bet-amount{
+        @media screen and (min-width: 801px) {
+            min-width: 115px;
+        }
+        @media screen and (max-width: 800px) {
+            min-width: 75px;
+        }
+        @media screen and (max-width: 470px) {
+            display: none;
+        }
+    }
+  }
+}

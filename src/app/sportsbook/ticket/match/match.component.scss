@@ -1,0 +1,44 @@
+$green: #01AC2D; 
+
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__name, &__betting-on{
+        color: black;
+        font-weight: normal;
+        font-size: 15px;
+
+        &:hover{
+            text-decoration: underline;
+            cursor: default;
+        }
+    }
+    &__betting-on{
+        color: red;
+    }
+    &__odd{
+        background-color: $green;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25px;
+        padding: 0px 8px;
+        border-radius: 5px;
+        cursor: default;
+    }
+
+    &__delete{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 25px;
+        cursor: pointer;
+
+        &:hover{
+            color: red;
+        }
+    }
+}

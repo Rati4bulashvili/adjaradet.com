@@ -1,0 +1,45 @@
+<div class="register">
+
+    <div class="register__header">{{'register' | translate}}</div>
+
+    <form class="register__form" (ngSubmit)='onRegister(registerForm)' #registerForm='ngForm'>
+
+        <label for='email' class="register__form__email">{{'register' | translate}}:</label>
+        <input [ngStyle]="{'border': !email.valid && email.touched || !email.valid && showStatuses ? '1px solid red' : 'none'}" 
+        required email id='email' #email='ngModel' name='email' type="email" class="register__form__email-input" ngModel>
+        <div class="register__form__email-validity" *ngIf='!email.valid && email.touched || !email.valid && showStatuses'>{{'mailWarning' | translate}}</div>
+        <br>
+        
+        <label for='passwod1' class="register__form__password">{{'password' | translate}}</label>
+        <input [ngStyle]="{'border': password2.value!==password1.value && password2.dirty || !password1.valid && showStatuses || password1?.value?.length < 6 && password1.touched? '1px solid red' : 'none'}"
+        required id='passwod1' #password1='ngModel' name='password1' type="password"
+        class="register__form__password-input" ngModel minlength='6'>
+        <div class="register__form__password1-validity" *ngIf='!password1.valid && password1.touched || !password1.valid && showStatuses'>{{'passwordWarning' | translate}}</div>
+        <br>
+        <label for='passwod2' class="register__form__password">{{'repeatPassword' | translate}}</label>
+        <input [ngStyle]="{'border': password2.value!==password1.value && password2.dirty?  '1px solid red' : 'none'}"
+        required id='passwod2' #password2='ngModel' name='password2' type="password"
+        class="register__form__password-input" ngModel minlength='6' >
+        <div class="register__form__password2-validity" *ngIf='password2.value!==password1.value && password2.dirty'>{{'passwordsDontMatchWarning' | translate}}</div>
+        <br>
+        
+        <div class='register__form__btn-wrapper'>
+            
+            <button
+            (click)='onCancelModal()'
+            type="button"
+            class='register__form__btn-wrapper__cancel'>{{'cancel' | translate}}
+            </button>
+
+            <button
+            [ngClass]="password1.value !== password2.value || !registerForm.valid ? 'invalid' : 'valid'"
+            #submit
+            type='submit'
+            class='register__form__btn-wrapper__submit'>{{'register' | translate}}
+            </button>
+        </div>
+    </form>
+
+</div>
+
+<!-- [disabled]='!registerForm.valid' -->

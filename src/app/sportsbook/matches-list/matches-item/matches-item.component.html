@@ -1,0 +1,4 @@
+<div class="match">
+    <div class="match__team-names">{{match.away | translate | shorten | uppercase}} - {{match.home | translate | shorten | uppercase}}</div>
+    <app-match-odds [match]='match'></app-match-odds>
+</div>

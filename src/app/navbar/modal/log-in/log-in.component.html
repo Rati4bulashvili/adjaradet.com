@@ -1,0 +1,36 @@
+<div class="log-in">
+
+    <div class="log-in__header">
+        {{'logIn' | translate}}
+    </div>
+
+    <form class="log-in__form" (ngSubmit)='onLogin(logInForm)' #logInForm='ngForm'>
+        
+        <label for='email' class="log-in__form__email">{{'emailUPPERCASE' | translate}}:</label>
+        <input [ngClass]='{"invalid": !email.valid && email.touched || showStatuses && !email.valid}'
+         required email id='email' #email='ngModel' name='email' type="email" class="log-in__form__email-input" ngModel>
+        <div class="log-in__form__username-validity" *ngIf='!email.valid && email.touched || showStatuses && !email.valid'>{{'mailWarning' | translate}}</div>
+        <br>
+        
+        <label for='passwod' class="log-in__form__password">{{'password' | translate}}</label>
+        <input [ngClass]='{"invalid": !password.valid && password.touched || showStatuses && !password.valid}'
+        required id='passwod' #password='ngModel' name='password' type="password" class="log-in__form__password-input" ngModel>
+        <div class="log-in__form__username-validity" *ngIf='!password.valid && password.touched || showStatuses && !password.valid'
+        >{{'passwordWarningShort' | translate}}</div>
+        <br>
+
+        <div class='log-in__form__btn-wrapper'>
+
+            <button
+            type='button'
+            (click)='onCancelModal()'
+            class='log-in__form__btn-wrapper__cancel'>{{'cancel' | translate}}
+            </button>
+            <button
+            [ngClass]='{"disabled": !logInForm.valid}'
+            type='submit'
+            class='log-in__form__btn-wrapper__submit'>{{'logIn' | translate}}</button>
+        </div>
+    </form>
+    
+</div>

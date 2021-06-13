@@ -1,0 +1,16 @@
+<div class='ticket'>
+        <div class="ticket__container">
+            <div class="ticket__container__header">
+                {{'betSlip' | translate}}({{matches.length}} {{'matches' | translate}})
+                <div class="ticket__container__header__matches" *ngIf='matches.length > 0'>
+                    <div class="ticket__container__header__matches__data" *ngFor='let match of matches; let i = index'>
+                        <app-match [match]='match' [id]='i'></app-match>
+                    </div>
+                </div>
+            </div>
+
+            <app-bet-place
+            [matches]='matches'
+            ></app-bet-place>
+        </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="sportsbook">
+
+    <div class="sportsbook__list">
+        <app-matches-header (ActiveSport)='getMatches($event)'></app-matches-header>
+
+        <div class="sportsbook__list__container">
+            <div class="sportsbook__list__container__loader" *ngIf='matches === []'></div>
+            <ng-container *ngFor='let match of matches; let i = index'>
+                <app-matches-item [match] = 'match'></app-matches-item>
+            </ng-container>
+        </div>
+    </div>
+
+    <app-ticket></app-ticket>
+</div>
+
+

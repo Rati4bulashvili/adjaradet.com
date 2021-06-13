@@ -1,0 +1,16 @@
+<div class="bet">
+
+  <div class="bet__tooltip">
+    {{'viewMatches' | translate}} ({{bet.matchDetails.length}})
+    <span class="bet__tooltip__matches-info">
+      <div class='bet__tooltip__matches-info__details' *ngFor='let match of bet.matchDetails'>
+        {{match.away | translate}} VS {{match.home | translate}}
+      </div>    
+    </span>
+  </div>
+  <div class="bet__bet-info">
+    <div class="bet__bet-info__odd">{{'odd' | translate}}: {{bet.betDetails.odd}}</div>
+    <div class="bet__bet-info__bet-amount">{{'bet' | translate}}: {{bet.betDetails.betAmount}}$</div>
+    <div class="bet__bet-info__poss-win">{{'possWin' | translate}}: {{bet.betDetails.possWin}}$</div>
+  </div>
+</div>

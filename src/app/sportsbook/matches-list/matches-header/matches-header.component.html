@@ -1,0 +1,5 @@
+<div class="header">
+    <a [routerLink]='["/sportsbook", "NBA"]' routerLinkActive='active' class="header__specific NBA "><img src="assets/icons/basketball.png" alt="basketball"> NBA({{matches?.nbaMatches?.length}})</a>
+    <a [routerLink]='["/sportsbook", "UFC"]' routerLinkActive='active' class="header__specific UFC"> <img src="assets/icons/mma.png" alt="mma"> UFC({{matches?.ufcMatches?.length}})</a>
+    <a [routerLink]='["/sportsbook", "UEFA"]' routerLinkActive='active' class="header__specific UEFA"> <img src="assets/icons/soccer.png" alt="soccer"> UEFA({{matches?.uefaMatches?.length}})</a>
+</div> 

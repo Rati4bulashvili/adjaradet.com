@@ -1,0 +1,4 @@
+<div class="odds">
+    <button oddsHighlight [match]='match' [highlightsArr]='highlightsArr' [bettingOn]='"away"' #away (click)='addToBet("away")' class="odds__away btn">{{'away' | translate}} {{match.awayOdd}}</button>
+    <button oddsHighlight [match]='match' [highlightsArr]='highlightsArr' [bettingOn]='"home"' #home (click)='addToBet("home")' class="odds__home btn">{{'home' | translate}} {{match.homeOdd}}</button>
+</div>

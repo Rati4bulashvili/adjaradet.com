@@ -1,0 +1,41 @@
+$dark1: rgba(29,35,41,255);
+
+.header{
+    background-color: $dark1;
+    display: flex;
+    
+    &__specific{
+        padding: 15px 40px;
+        background-color: $dark1;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        white-space: nowrap;
+
+        @media screen and (max-width: 600px) {
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+        @media screen and (max-width: 400px) {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        img{
+            width: 30px;
+        }
+
+        &:hover{
+            background-color: rgb(34,40,50);
+        }  
+    }
+}
+
+.active{
+    border-bottom: 1px solid red; 
+}
