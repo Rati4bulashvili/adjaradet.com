@@ -22,7 +22,7 @@ import { BetsHistoryItemComponent } from './bets-history/bets-history-list/bets-
 import { BetsHistoryListComponent } from './bets-history/bets-history-list/bets-history-list.component';
 
 export function HttpLoaderFactory(http: HttpClient){
-    return new TranslateHttpLoader(http)
+   return new TranslateHttpLoader(http, "assets/i18n/", ".json")
 }
 
 @NgModule({
