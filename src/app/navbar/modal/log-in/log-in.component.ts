@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Account } from 'src/app/shared/models/account.model';
-import { Auth } from 'src/app/shared/models/auth.model';
 import { AccountService } from 'src/app/shared/services/account.service';
+import { AppState } from 'src/app/shared/store/app/app.reducer';
 import * as AuthActions from '../../../shared/store/auth/auth.actions'
 
 @Component({
@@ -17,7 +15,7 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private store: Store<{auth: Auth}>,
+    private store: Store<AppState>,
   ) {}
 
   @ViewChild('logInForm') logInForm: NgForm; 

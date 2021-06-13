@@ -1,5 +1,5 @@
 import { Directive, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
-import { Match } from 'src/app/shared/models/match-details.model';
+import { Match } from 'src/app/shared/models/match.model';
 import { ButtonHighlightService } from '../../../button-highlight.service';
 
 @Directive({

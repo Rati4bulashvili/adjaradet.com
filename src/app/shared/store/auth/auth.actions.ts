@@ -1,8 +1,5 @@
-import { NgForm } from "@angular/forms";
 import { Action } from "@ngrx/store";
-import { Account } from "src/app/shared/models/account.model";
 import { Auth } from "../../models/auth.model";
-import { FullBet } from "../../models/full-bet-details.model";
 
 export const LOGIN_START = '[account] LOGIN_START';
 export const CHANGE_USER = '[account] CHANGE_USER';

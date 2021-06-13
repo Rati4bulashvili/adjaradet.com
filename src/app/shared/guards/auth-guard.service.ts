@@ -1,11 +1,9 @@
 import { CanActivate, Router } from "@angular/router";
 import { Observable } from "rxjs";
-import { AccountService } from "../services/account.service";
 import { Injectable } from '@angular/core'
 import { Store } from "@ngrx/store";
-import { Account } from "../models/account.model";
 import { Auth } from "../models/auth.model";
-import { SubSink } from "subsink";
+import { AppState } from "../store/app/app.reducer";
 
 @Injectable()
 
@@ -28,7 +26,7 @@ export class AuthGuard implements CanActivate{
 
     constructor(
         private router: Router,
-        private store: Store<{auth: Auth}>
+        private store: Store<AppState>
     )
     {
         this.store.select('auth').subscribe((authData)=>{

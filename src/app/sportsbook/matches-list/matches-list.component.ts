@@ -1,7 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import { MessageService } from 'src/app/shared/services/message.service';
+import { Component, ViewChild, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Match } from 'src/app/shared/models/match.model';
+import { AppState } from 'src/app/shared/store/app/app.reducer';
 import { SubSink } from 'subsink';
-import { DataService } from './data.service';
+import { DataService } from './data-organise.service';
 import { MatchesHeaderComponent } from './matches-header/matches-header.component'
 
 @Component({
@@ -9,23 +11,44 @@ import { MatchesHeaderComponent } from './matches-header/matches-header.componen
   templateUrl: './matches-list.component.html',
   styleUrls: ['./matches-list.component.scss']
 })
-export class MatchesListComponent implements OnInit, AfterViewInit, OnDestroy{
+export class MatchesListComponent implements AfterViewInit, OnDestroy{
 
-  constructor( public dataService: DataService, private messageService: MessageService) { }
+  constructor( 
+    public dataService: DataService,
+    private store: Store<AppState>,
+    private ChangeDetecotor: ChangeDetectorRef
+  ) { }
 
   @ViewChild(MatchesHeaderComponent) HeaderComponent: MatchesHeaderComponent;
   
   ngAfterViewInit(){
-    this.subs.sink = this.dataService.fetchMatches().subscribe(matches => {
-      this.dataService.organiseMatchesData(matches) 
-      this.getMatches(this.HeaderComponent.activeSport)
-    }, ()=> {
-      this.messageService.message.next({message: 'something went wrong, Check your connection', error: true})
-    });
+
+    this.subs.sink = this.store.select('matches').subscribe(matches =>{
+
+      if(matches){
+        this.NBAMatches = matches?.nbaMatches
+        this.UFCMatches = matches?.ufcMatches
+        this.UEFAMatches = matches?.uefaMatches
+
+        switch(this?.HeaderComponent?.activeSport){
+          case "NBA":
+            this.matches = matches?.nbaMatches;
+            break;
+          case "UFC":
+            this.matches = matches?.ufcMatches;
+            break;
+          case "UEFA":
+            this.matches = matches?.uefaMatches;
+            break;
+        }
+        this.ChangeDetecotor.detectChanges();
+      }    
+    })
   }
-  
-  ngOnInit(): void {
-  }
+
+  NBAMatches: Match[];
+  UFCMatches: Match[];
+  UEFAMatches: Match[];
 
   private subs = new SubSink();
 
@@ -34,18 +57,21 @@ export class MatchesListComponent implements OnInit, AfterViewInit, OnDestroy{
   }
 
   getMatches(sport: string){
-    this.matches = this.dataService.returnSpecificMatches(sport);
+
+    switch(sport){
+      case "NBA":
+        this.matches = this.NBAMatches;
+        break;
+        case "UFC":
+          this.matches = this.UFCMatches;
+          break;
+      case "UEFA":
+        this.matches = this.UEFAMatches;
+        break;
+    }
+
   }
 
   matches = [];
-  activeSport: string;
   
-  @ViewChild('NBA') NBA: ElementRef;
-  @ViewChild('UFC') UFC: ElementRef;
-  @ViewChild('UEFA') UEFA: ElementRef;
-  
-  NBAMatchesLength = this.dataService.NBAMatches.length;
-  UFCMatchesLength = this.dataService.UFCMatches.length;
-  UEFAMatchesLength = this.dataService.UEFAMatches.length;
-
 }

@@ -1,12 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Account } from '../models/account.model';
 import { Store } from '@ngrx/store';
 import * as accountActions from '../store/auth/auth.actions'
-import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Auth } from '../models/auth.model';
-import { MessageService } from './message.service';
+import { AppState } from '../store/app/app.reducer';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +17,7 @@ export class AccountService{
   }
 
   constructor(
-    private store: Store<{auth: Auth}>, 
+    private store: Store<AppState>, 
   ) { 
   }
 
@@ -33,6 +29,7 @@ export class AccountService{
     this.store.dispatch(new accountActions.ChangeUser({email: userData.email, password: userData.password}))
   }
   
+  message = new Subject<{message: string, error: boolean}>();
 
 }
 

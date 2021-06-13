@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { ShortenPipe } from './sportsbook/matches-list/matches-item/shorten.pipe';
 import { SportsBookRouteModule } from './shared/sportsbook-router/sportsbook-route.module';
 import { OddsHighlightDirective } from './sportsbook/matches-list/matches-item/match-odds/odds-highlight.directive';
-import { CanDeactivateGuard } from './sportsbook/ticket/bet-place/can-deactivate-guard.service';
+import { CanDeactivateGuard } from './shared/guards/can-deactivate-guard.service';
 import { TranslateLoader, TranslateModule,  } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';

@@ -1,4 +1,4 @@
-import { FullBet } from "./full-bet-details.model";
+import { FullBet } from "./full-bet.model";
 
 export interface AccountData {
     balance: number;

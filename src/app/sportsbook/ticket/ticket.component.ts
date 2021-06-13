@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit,} from '@angular/core';
 import { ButtonHighlightService } from '../button-highlight.service'
-import { Match } from 'src/app/shared/models/match-details.model';
-import { DataService } from '../matches-list/data.service';
+import { Match } from 'src/app/shared/models/match.model';
+import { DataService } from '../matches-list/data-organise.service';
 import { BetDetailsService } from 'src/app/shared/services/bet-details.service';
 import { SubSink } from 'subsink'
 
@@ -15,6 +15,7 @@ export class TicketComponent implements OnInit, OnDestroy{
 
   possWin: number;
   matches: Match[] = [];
+  private subs = new SubSink();
 
   constructor(
   private dataService: DataService,
@@ -50,8 +51,6 @@ export class TicketComponent implements OnInit, OnDestroy{
       this.buttonHighlightService.formHighlightData(this.matches)
     })
   }
-
-  private subs = new SubSink();
 
   ngOnDestroy(){
     this.subs.unsubscribe;

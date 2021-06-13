@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild, ElementRef} from '@angular/core';
-import { Match } from 'src/app/shared/models/match-details.model';
+import { Match } from 'src/app/shared/models/match.model';
 import { ButtonHighlightService } from '../../../button-highlight.service';
-import { DataService } from '../../data.service';
+import { DataService } from '../../data-organise.service';
 
 @Component({
   selector: 'app-match-odds',

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FullBet } from 'src/app/shared/models/full-bet-details.model';
+import { FullBet } from 'src/app/shared/models/full-bet.model';
 
 @Component({
   selector: 'app-bets-history-header',

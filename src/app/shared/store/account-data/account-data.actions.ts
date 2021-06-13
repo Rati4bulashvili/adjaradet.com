@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { FullBet } from "../../models/full-bet-details.model";
+import { FullBet } from "../../models/full-bet.model";
 
 export const GET_BALANCE_DATA = '[account data] GET_BALANCE_DATA';
 export const UPDATE_BALANCE = '[account data] UPDATE_BALANCE';

@@ -1,12 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AccountData } from 'src/app/shared/models/account-data.model';
-import { Account } from 'src/app/shared/models/account.model';
-import { Auth } from 'src/app/shared/models/auth.model';
-import { FullBet } from 'src/app/shared/models/full-bet-details.model';
-import { TranslateService, TranslatePipe } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { FullBet } from 'src/app/shared/models/full-bet.model';
 import { SubSink } from 'subsink';
+import { AppState } from '../shared/store/app/app.reducer';
 
 @Component({
   selector: 'app-bets-history',
@@ -15,10 +11,7 @@ import { SubSink } from 'subsink';
 })
 export class BetsHistoryComponent implements OnInit, OnDestroy {
 
-  constructor( 
-    private store: Store<{accountData: AccountData}>,
-  ){    
-  }
+  constructor(private store: Store<AppState>){}
   
   betsHistory: FullBet[]= [];
 

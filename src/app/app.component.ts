@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { Matches } from './shared/models/matches.model';
+import { AllSportsMatches } from './shared/models/all-sports-matches.model';
 import { AccountService } from './shared/services/account.service';
+import { AppState } from './shared/store/app/app.reducer';
 import * as matchesActions from './shared/store/matches/matches.actions'
 
 @Component({
@@ -12,17 +13,17 @@ import * as matchesActions from './shared/store/matches/matches.actions'
 })
 export class AppComponent implements OnInit {
   title = 'adjaradet';
+  matches: AllSportsMatches
 
   constructor(
     private accountService: AccountService,
     private TranslateService: TranslateService,
-    private store: Store<{matches: Matches}>
+    private store: Store<AppState>
   ) {
     this.TranslateService.setDefaultLang('en')
     this.TranslateService.use(localStorage.getItem('language') || 'en')
   }
 
-  matches: Matches
   ngOnInit(){
     this.accountService.autoLogIn();
 

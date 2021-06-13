@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit} from '@angular/core';
-import { Match } from 'src/app/shared/models/match-details.model';
-import { DataService } from '../../matches-list/data.service';
+import { Match } from 'src/app/shared/models/match.model';
+import { DataService } from '../../matches-list/data-organise.service';
 
 @Component({
   selector: 'app-match',

@@ -1,58 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Match } from 'src/app/shared/models/match-details.model';
+import { Match } from '../../shared/models/match.model';
 
 @Injectable({
   providedIn: 'root' 
 })
 export class DataService {
 
-  constructor(private http: HttpClient) { }
-
-  returnSpecificMatches(sport: string){
-    switch (sport) {
-      case 'NBA':
-        return this.NBAMatches;
-      case 'UFC':
-        return this.UFCMatches;
-      case 'UEFA':
-        return this.UEFAMatches;
-
-      default:
-        break;
-    }
-  }
-
-  fetchMatches(){
-    return this.http.get<{[key: string]: Match}>('https://sportsbetting-e1417-default-rtdb.firebaseio.com/posts.json')
-    .pipe(
-      map(responseData => {
-      const postsArr = [];
-      for(const key in responseData){
-        postsArr.push(responseData[key]);
-      }
-      return postsArr;
-    })
-    )
-  }
-
-  organiseMatchesData(matches: Match[][]){ 
-    this.NBAMatches = matches[0];
-    this.UFCMatches = matches[1];
-    this.UEFAMatches = matches[2];
-
-    return {nbaMatches: this.NBAMatches, ufcMatches: this.UFCMatches, uefaMatches: this.UEFAMatches}
-  }
-  
-  NBAMatches: Match[] = []
-  UFCMatches: Match[] = []
-  UEFAMatches: Match[] = []
-
-///////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////
+  constructor() { }
 
   calculatePossWinAndOdd(input: HTMLInputElement, matches: Match[]){
 

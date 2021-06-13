@@ -5,10 +5,11 @@ import * as AccountDataActions from './account-data.actions'
 import { of } from "rxjs";
 import { Injectable, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { MessageService } from "../../services/message.service";
-import { FullBet } from "../../models/full-bet-details.model";
+import { FullBet } from "../../models/full-bet.model";
 import { Auth } from "../../models/auth.model";
 import { AccountData } from "../../models/account-data.model";
+import { AppState } from "../app/app.reducer";
+import { AccountService } from "../../services/account.service";
 
 @Injectable()
 export class AccountDataEffects {
@@ -21,7 +22,7 @@ export class AccountDataEffects {
     else{
       errorMessage = error.error.error.message
     }
-    this.MessageService.message.next({message: errorMessage, error: true})    
+    this.accountService.message.next({message: errorMessage, error: true})    
   };
 
   @Effect()
@@ -66,10 +67,10 @@ export class AccountDataEffects {
           if(!userData.payload.loggingIn){
 
             if(this.language !== 'ge'){
-              this.MessageService.message.next({message: `transaction successful! your balance: ${userData.payload.balance}$`, error: false})
+              this.accountService.message.next({message: `transaction successful! your balance: ${userData.payload.balance}$`, error: false})
             }
             else{
-              this.MessageService.message.next({message: `ტრანზაქცია წარმატებულია! თქვენი ანგარიში: ${userData.payload.balance}$`, error: false})
+              this.accountService.message.next({message: `ტრანზაქცია წარმატებულია! თქვენი ანგარიში: ${userData.payload.balance}$`, error: false})
             }
             this.updateBalanceInDB(postsArr, userData)
           }
@@ -88,7 +89,7 @@ export class AccountDataEffects {
         return this.http.put('https://balances-933a3-default-rtdb.europe-west1.firebasedatabase.app/balances.json', 
         postsArr).subscribe(()=>{
         }, () => {
-          this.MessageService.message.next({message: 'something went wrong, Check your connection', error: true})
+          this.accountService.message.next({message: 'something went wrong, Check your connection', error: true})
         })
       }
     });
@@ -134,7 +135,7 @@ export class AccountDataEffects {
           if(!userData.payload.loggingIn){
             let placedBet: FullBet = userData.payload.betsHistory[userData.payload.betsHistory.length-1]
             this.updateBetsHistoryInDB(placedBet, userData)
-            this.MessageService.message.next({message: `Your Bet Was Placed`, error: false})
+            this.accountService.message.next({message: `Your Bet Was Placed`, error: false})
             return new AccountDataActions.UpdateBalance({email: this.authData.email, balance: this.accountData.balance - placedBet.betDetails.betAmount, loggingIn: userData.payload.loggingIn})/////////////////////////////////////
           }
           else{
@@ -165,8 +166,8 @@ export class AccountDataEffects {
   constructor(
     private actions: Actions,
     private http: HttpClient, 
-    private store: Store<{auth: Auth, accountData: AccountData}>,
-    private MessageService: MessageService
+    private store: Store<AppState>,
+    private accountService: AccountService
   ){
     this.store.select('auth').subscribe(authData => {
       this.authData = authData;

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Bet } from '../../sportsbook/bet-details.model';
-import { Match } from '../models/match-details.model';
+import { Match } from '../models/match.model';
 import * as accountDataActions from '../store/account-data/account-data.actions'
 import { Subject } from 'rxjs';
-import { MessageService } from './message.service';
 import { Auth } from '../models/auth.model';
 import { AccountData } from '../models/account-data.model';
+import { AppState } from '../store/app/app.reducer';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class BetDetailsService{
   accountData: AccountData;
 
   constructor(
-    private store: Store<{auth: Auth, accountData: AccountData}>,
-    private messageService: MessageService,
+    private store: Store<AppState>,
+    private accountService: AccountService,
   ){
     this.store.select('auth').subscribe((authData)=>{
       this.authData = authData;
@@ -39,7 +40,7 @@ export class BetDetailsService{
     }
     else{
       this.betCanNotBePlaced.next();  
-      this.messageService.message.next({message: 'Not Enough Money On Your Account', error: true})
+      this.accountService.message.next({message: 'Not Enough Money On Your Account', error: true})
       return false;
     }
   }

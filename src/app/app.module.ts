@@ -27,9 +27,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './shared/store/auth/auth.effects';
 import { AccountDataReducer } from './shared/store/account-data/account-data.reducer';
 import { AccountDataEffects } from './shared/store/account-data/account-data.effects';
-import { BetsHistoryListComponent } from './bets-history/bets-history-list/bets-history-list.component';
 import { MatchesReducer } from './shared/store/matches/matches.reducer';
 import { MatchesEffects } from './shared/store/matches/matches.effects';
+import { appReducer } from './shared/store/app/app.reducer';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { MatchesEffects } from './shared/store/matches/matches.effects';
     HttpClientModule,
     CoreModule,
     SportsBookModule,
-    StoreModule.forRoot({auth: AuthReducer, accountData: AccountDataReducer, matches: MatchesReducer}),
+    StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([AuthEffects, AccountDataEffects, MatchesEffects]),
     CommonModule,
 

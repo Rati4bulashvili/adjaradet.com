@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Match } from 'src/app/shared/models/match-details.model';
+import { Match } from 'src/app/shared/models/match.model';
 import { AccountService } from 'src/app/shared/services/account.service';
 import { BetDetailsService } from 'src/app/shared/services/bet-details.service';
 import { Bet } from '../../bet-details.model';
-import { DataService } from '../../matches-list/data.service';
+import { DataService } from '../../matches-list/data-organise.service';
 import * as accountDataActions from '../../../shared/store/account-data/account-data.actions'
-import { Account } from 'src/app/shared/models/account.model';
 import { Auth } from 'src/app/shared/models/auth.model';
 import { SubSink } from 'subsink';
+import { AppState } from 'src/app/shared/store/app/app.reducer';
 
 @Component({
   selector: 'app-bet-place',
@@ -21,27 +21,23 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
     private dataService: DataService,
     private betDetailsService: BetDetailsService,
     public accountService: AccountService,
-    private store: Store<{auth: Auth}>,
+    private store: Store<AppState>,
   ) { }
 
   authData: Auth;
   private subs = new SubSink();
+  betInfo: {odd: number, possWin: number, betCanBePlaced: boolean};
+  odd: number;
+  @ViewChild('inputBet') inputBet: ElementRef;
+  inputCanBeFilled = false;
+  betDetails: Bet;
+  @Input() matches: Match[];
 
   ngOnInit(): void {
     this.subs.sink = this.store.select('auth').subscribe((authData) => {
       this.authData = authData;
     })
   }
-
-  ngOnDestroy(){
-    this.subs.unsubscribe();
-  }
-
-  @ViewChild('inputBet') inputBet: ElementRef;
-
-  inputCanBeFilled = false;
-  betDetails: Bet;
-  @Input() matches: Match[];
 
   placeBet(betAmount: HTMLInputElement){
     this.matches.forEach(match => {
@@ -58,9 +54,6 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
       this.clearData(betAmount);
     }
   }
-
-  betInfo: {odd: number, possWin: number, betCanBePlaced: boolean};
-  odd: number;
   
   calculatePossWin(inputBet: HTMLInputElement, matches: Match[]){
     this.betInfo = this.dataService.returnPossWin(inputBet, matches);
@@ -98,5 +91,9 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
         }
       }
     }
+  }
+
+  ngOnDestroy(){
+    this.subs.unsubscribe();
   }
 }

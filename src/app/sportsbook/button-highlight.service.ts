@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
-import { Match } from "../shared/models/match-details.model";
+import { Match } from "../shared/models/match.model";
 
 @Injectable({
     providedIn: 'root'

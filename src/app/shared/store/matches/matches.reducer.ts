@@ -1,10 +1,10 @@
 import * as matchesActions from '../matches/matches.actions'
-import { Match } from "../../models/match-details.model";
-import { Matches } from '../../models/matches.model';
+import { Match } from "../../models/match.model";
+import { AllSportsMatches } from '../../models/all-sports-matches.model';
 
-const currentState: Matches = null;
+const currentState: AllSportsMatches = null;
 
-export function MatchesReducer(state: Matches = currentState, action: matchesActions.matchesActionTypes){
+export function MatchesReducer(state: AllSportsMatches = currentState, action: matchesActions.matchesActionTypes){
 
     switch(action.type){            
         case matchesActions.UPDATE_MATCHES:

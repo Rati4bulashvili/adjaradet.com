@@ -1,12 +1,8 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { AccountData } from 'src/app/shared/models/account-data.model';
-import { Account } from 'src/app/shared/models/account.model';
 import { Auth } from 'src/app/shared/models/auth.model';
-import { AccountService } from 'src/app/shared/services/account.service';
-import { MessageService } from 'src/app/shared/services/message.service';
+import { AppState } from 'src/app/shared/store/app/app.reducer';
 import { SubSink } from 'subsink';
 import * as accountDataActions from '../../shared/store/account-data/account-data.actions'
 
@@ -20,7 +16,7 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
   @ViewChild('password') password: ElementRef;
 
   constructor(
-    private store: Store<{auth: Auth, accountData: AccountData}>
+    private store: Store<AppState>
   ) { }
 
   authData: Auth;
@@ -45,8 +41,8 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  checkForEnter(e, moneyAmount: HTMLInputElement){
-    if(e.key === 'Enter'){
+  checkForEnter(pressedKey: string, moneyAmount: HTMLInputElement){
+    if(pressedKey === 'Enter'){
       this.addMoney(moneyAmount)
     }
   }
