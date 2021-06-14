@@ -2,11 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { UserRouteModule } from './navbar/user-routing.module';
-// import { AccountInfoComponent } from './navbar/account-info/account-info.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthGuard } from './shared/guards/auth-guard.service';
 import { SportsBookRouteModule } from './shared/sportsbook-router/sportsbook-route.module';
-
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
