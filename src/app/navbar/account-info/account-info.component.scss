@@ -91,11 +91,10 @@ $dark2: rgba(32,40,48,255);
             border: none;
             outline: none;
             cursor: default;
-            max-width: 120px;
+            max-width: 160px;
             font-size: 20px;
             color: black;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
         &__toggle-visibility{
@@ -103,6 +102,7 @@ $dark2: rgba(32,40,48,255);
             border: none;
             outline: none;
             cursor: pointer;
+            margin-left: auto;
             
             img{
                 vertical-align: middle;

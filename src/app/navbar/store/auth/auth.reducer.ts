@@ -7,7 +7,11 @@ export function AuthReducer(state: Auth = currentState, action: AccountActions.A
 
     switch(action.type){
         case AccountActions.CHANGE_USER:
-            return action.payload;            
+            return {
+                ...state,
+                email: action.payload.email,
+                password: action.payload.password
+            }            
         case AccountActions.LOG_OUT:
             return null;
         default: 

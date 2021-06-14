@@ -69,6 +69,8 @@
   "This Email already exists": "მოცემული ელ-ფოსტა უკვე არსებობს",
   "This password is invalid": "პაროლი არასწორია",
   "This Email does not exist": "მოცემული ელ-ფოსტა არ არსებობს",
-  "Not Enough Money On Your Account": "თქვენს ანგარიშზე არაა საკმარისი თანხა"
+  "Not Enough Money On Your Account": "თქვენს ანგარიშზე არაა საკმარისი თანხა",
+
+  "THE PAGE WAS NOT FOUND": "გვერდი არ არსებობს"
 }
 

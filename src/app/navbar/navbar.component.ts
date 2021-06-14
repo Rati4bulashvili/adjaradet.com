@@ -7,9 +7,9 @@ import { ModalPurpose } from '../shared/enums/modal-purpose.enum';
 import { AccountData } from '../shared/models/account-data.model';
 import { Auth } from '../shared/models/auth.model';
 import { AccountService } from '../shared/services/account.service';
-import * as AccountDataActions from '../shared/store/account-data/account-data.actions'
+import * as AccountDataActions from './store/account-data/account-data.actions'
 import { AppState } from '../shared/store/app/app.reducer';
-import * as AuthActions from '../shared/store/auth/auth.actions'
+import * as AuthActions from './store/auth/auth.actions'
 
 @Component({
   selector: 'app-navbar',

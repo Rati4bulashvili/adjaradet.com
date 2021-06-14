@@ -5,7 +5,7 @@ import * as AuthActions from './auth.actions';
 import * as AccountDataActions from '../account-data/account-data.actions';
 import { of } from "rxjs";
 import { Injectable } from "@angular/core";
-import { AccountService } from "../../services/account.service";
+import { AccountService } from "../../../shared/services/account.service";
 
 interface authResponse{
   kind: string;

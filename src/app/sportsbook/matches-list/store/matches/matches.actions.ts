@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
-import { Match } from "../../models/match.model";
-import { AllSportsMatches } from "../../models/all-sports-matches.model";
+import { Match } from "../../../../shared/models/match.model";
+import { AllSportsMatches } from "../../../../shared/models/all-sports-matches.model";
 
 export const GET_MATCHES = '[matches] GET_MATCHES';
 export const UPDATE_MATCHES = '[matches] UPDATE_MATCHES';

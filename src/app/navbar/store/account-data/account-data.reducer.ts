@@ -1,4 +1,4 @@
-import { AccountData } from "../../models/account-data.model";
+import { AccountData } from "../../../shared/models/account-data.model";
 import * as accountDataActions from './account-data.actions'
 
 const currentState: AccountData = null;

@@ -4,9 +4,9 @@ import { Effect, ofType } from "@ngrx/effects";
 import { Actions } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, map, switchMap } from "rxjs/operators";
-import { Match } from "../../models/match.model";
-import { AccountService } from "../../services/account.service";
-import * as matchesActions from '../matches/matches.actions'
+import { Match } from "../../../../shared/models/match.model";
+import { AccountService } from "../../../../shared/services/account.service";
+import * as matchesActions from './matches.actions'
 
 @Injectable()
 export class MatchesEffects{
@@ -15,7 +15,7 @@ export class MatchesEffects{
   getMatches = this.actions.pipe( 
     ofType(matchesActions.GET_MATCHES),
       
-    switchMap((matchesData: matchesActions.GetMatches) => {
+    switchMap(() => {
 
       return this.http.get('https://sportsbetting-e1417-default-rtdb.firebaseio.com/posts.json')
       .pipe(

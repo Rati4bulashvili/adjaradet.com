@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Auth } from "../../models/auth.model";
+import { Auth } from "../../../shared/models/auth.model";
 
 export const LOGIN_START = '[account] LOGIN_START';
 export const CHANGE_USER = '[account] CHANGE_USER';

@@ -5,7 +5,7 @@ import { AccountService } from 'src/app/shared/services/account.service';
 import { BetDetailsService } from 'src/app/shared/services/bet-details.service';
 import { Bet } from '../../bet-details.model';
 import { DataService } from '../../matches-list/data-organise.service';
-import * as accountDataActions from '../../../shared/store/account-data/account-data.actions'
+import * as accountDataActions from '../../../navbar/store/account-data/account-data.actions'
 import { Auth } from 'src/app/shared/models/auth.model';
 import { SubSink } from 'subsink';
 import { AppState } from 'src/app/shared/store/app/app.reducer';

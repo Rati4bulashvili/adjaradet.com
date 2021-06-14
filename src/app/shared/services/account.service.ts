@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as accountActions from '../store/auth/auth.actions'
+import * as accountActions from '../../navbar/store/auth/auth.actions'
 import { Subject } from 'rxjs';
 import { AppState } from '../store/app/app.reducer';
 

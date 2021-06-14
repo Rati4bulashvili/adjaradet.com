@@ -5,11 +5,11 @@ import * as AccountDataActions from './account-data.actions'
 import { of } from "rxjs";
 import { Injectable, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { FullBet } from "../../models/full-bet.model";
-import { Auth } from "../../models/auth.model";
-import { AccountData } from "../../models/account-data.model";
-import { AppState } from "../app/app.reducer";
-import { AccountService } from "../../services/account.service";
+import { FullBet } from "../../../shared/models/full-bet.model";
+import { Auth } from "../../../shared/models/auth.model";
+import { AccountData } from "../../../shared/models/account-data.model";
+import { AppState } from "../../../shared/store/app/app.reducer";
+import { AccountService } from "../../../shared/services/account.service";
 
 @Injectable()
 export class AccountDataEffects {

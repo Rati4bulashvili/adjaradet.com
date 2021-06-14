@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AccountService } from 'src/app/shared/services/account.service';
 import { AppState } from 'src/app/shared/store/app/app.reducer';
-import * as AuthActions from '../../../shared/store/auth/auth.actions'
+import * as AuthActions from '../../store/auth/auth.actions'
 
 @Component({
   selector: 'app-log-in',

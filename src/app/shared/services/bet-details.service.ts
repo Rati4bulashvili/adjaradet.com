@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Bet } from '../../sportsbook/bet-details.model';
 import { Match } from '../models/match.model';
-import * as accountDataActions from '../store/account-data/account-data.actions'
+import * as accountDataActions from '../../navbar/store/account-data/account-data.actions'
 import { Subject } from 'rxjs';
 import { Auth } from '../models/auth.model';
 import { AccountData } from '../models/account-data.model';

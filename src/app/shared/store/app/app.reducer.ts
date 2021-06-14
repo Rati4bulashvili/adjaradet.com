@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
-import * as fromAuth from '../auth/auth.reducer';
-import * as fromMatches from '../matches/matches.reducer';
-import * as fromAccountData from '../account-data/account-data.reducer';
+import * as fromAuth from '../../../navbar/store/auth/auth.reducer';
+import * as fromMatches from '../../../sportsbook/matches-list/store/matches/matches.reducer';
+import * as fromAccountData from '../../../navbar/store/account-data/account-data.reducer';
 import { AllSportsMatches } from '../../models/all-sports-matches.model';
 import { AccountData } from '../../models/account-data.model';
 import { Auth } from '../../models/auth.model';

@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AllSportsMatches } from './shared/models/all-sports-matches.model';
 import { AccountService } from './shared/services/account.service';
 import { AppState } from './shared/store/app/app.reducer';
-import * as matchesActions from './shared/store/matches/matches.actions'
+import * as matchesActions from './sportsbook/matches-list/store/matches/matches.actions'
 
 @Component({
   selector: 'app-root',
