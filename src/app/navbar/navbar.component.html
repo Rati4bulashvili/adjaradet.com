@@ -1,9 +1,8 @@
 <ul class='navbar'>
     <li class='navbar__item logo'><a routerLink='/' ><img class='navbar__item__logo' src="assets/pictures/logo.png" alt="adjaradet"></a></li>
     <li class='navbar__item mini-logo'><a routerLink='/' ><img class='navbar__item__mini-logo' src="assets/icons/mini-logo.png" alt="adjaradet"></a></li>
-    <li *ngIf="authData" class='navbar__item my-bets'><a class='navbar__item__link' routerLink='/betsHistory'>{{'myBets' | translate}}({{accountData?.betsHistory?.length}})</a></li>
+    <li *ngIf="email" class='navbar__item my-bets'><a class='navbar__item__link' routerLink='/betsHistory'>{{'myBets' | translate}}({{accountData?.betsHistory?.length}})</a></li>
     <li class='navbar__item sports'><a routerLink='/sportsbook/NBA' class='navbar__item__link'>{{'sport' | translate}}</a></li>
-
     <ul class='navbar__item__account'>
 
       <div class="switch-button navbar__item__account__switch-btn">
@@ -11,11 +10,11 @@
         <label class="switch-button-label" for=""><span class="switch-button-label-span">Eng</span></label>
       </div>
 
-      <ng-container *ngIf="!authData?.email">
+      <ng-container *ngIf="!email">
         <li><button (click)='onOpenModal("log in")' class='navbar__item__account__log-in'>{{'logIn' | translate}}</button></li>
         <li><button (click)='onOpenModal("register")' class='navbar__item__account__register'>{{'register' | translate}}</button></li>
       </ng-container>
-      <ng-container *ngIf="authData?.email">
+      <ng-container *ngIf="email">
         <li><div class='navbar__item__account__balance'>{{'balance' | translate}}: {{accountData?.balance}}$</div></li>
         <li><button (click)='onLogOut()' class='navbar__item__account__log-out'>{{'logOut' | translate}}</button></li>
         <li><button routerLink='/account-info' class='navbar__item__account__info'>{{'account' | translate}}</button></li>
@@ -25,11 +24,11 @@
           <span class="navbar__item__account__dropdown__name">{{'account' | translate}}<img src="assets/icons/dropdown.png" alt="dropdown"></span>
           <div class="navbar__item__account__dropdown__dropdown-content">
 
-            <ng-container *ngIf="!authData?.email">
-              <button (click)='onOpenModal(modalPurpose.login)' class='navbar__item__account__dropdown__dropdown-content__item'>{{'logIn' | translate}}</button>
-              <button (click)='onOpenModal(modalPurpose.register)' class='navbar__item__account__dropdown__dropdown-content__item'>{{'register' | translate}}</button>
+            <ng-container *ngIf="!email">
+              <button (click)='onOpenModal(modalpurpose.login)' class='navbar__item__account__dropdown__dropdown-content__item'>{{'logIn' | translate}}</button>
+              <button (click)='onOpenModal(modalpurpose.register)' class='navbar__item__account__dropdown__dropdown-content__item'>{{'register' | translate}}</button>
             </ng-container>
-            <ng-container *ngIf="authData?.email">
+            <ng-container *ngIf="email">
               <button (click)='onLogOut()' class='navbar__item__account__dropdown__dropdown-content__item  navbar__item__account__dropdown__dropdown-content__item--log-out' >{{'logOut' | translate}}</button>
               <button routerLink='/account-info' class='navbar__item__account__dropdown__dropdown-content__item'>{{'account' | translate}}</button>
             </ng-container>

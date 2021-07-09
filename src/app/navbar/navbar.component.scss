@@ -205,10 +205,11 @@ $dark2: rgba(45,53,63,255);
 
             &__register, &__info{
                 background-color: #323d49;
+                margin-left: 0px;
             }
             &__log-out{
                 background-color: red;
-                margin-left: 10px;
+                margin: 0px 10px;
             }
             &__log-in{
                 margin-left: 10px;

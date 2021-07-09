@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { FullBet } from 'src/app/shared/models/full-bet.model';
 import { SubSink } from 'subsink';
 import { AppState } from '../shared/store/app/app.reducer';
+import * as fromAccountData from '../navbar/store/account-data/account-data.selectors'
 
 @Component({
   selector: 'app-bets-history',
@@ -17,10 +18,10 @@ export class BetsHistoryComponent implements OnInit, OnDestroy {
 
   private subs = new SubSink();
   ngOnInit(): void {
-
-    this.subs.sink = this.store.select('accountData').subscribe((accountData) => {
-      this.betsHistory = accountData?.betsHistory;
+    this.subs.sink = this.store.select(fromAccountData.getBetsHistoryState).subscribe(betsHistory => {
+      this.betsHistory = betsHistory;
     })
+
   }
 
   ngOnDestroy(){

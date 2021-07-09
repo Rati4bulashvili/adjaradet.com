@@ -1,0 +1,31 @@
+
+<div class="info">
+  <div class='info__logo'>
+      <div class="info__logo__name">MASTERCARD</div>
+      <img class='info__logo__img' src="assets/icons/mastercard.png" alt="mastercard">
+  </div>
+  <div class="info__email">
+      {{authData?.email}}
+  </div>
+  <div class="info__password">{{'Password' | translate}}: 
+      <input class='info__password__input' [value]='authData?.password' type="password" readonly="readonly" #password >
+      <button class='info__password__toggle-visibility' (click)="toggleVisibility()">
+          <img *ngIf='password.type !== "password"; else visible' src="assets/icons/visible.png" alt="visible">
+          <ng-template #visible>
+              <img  src="assets/icons/not-visible.png" alt="invisible">
+          </ng-template>
+      </button>
+  </div>
+
+  <div class="info__balance">{{'balance' | translate}}: {{accountData?.balance}}$</div>
+  <div class="info__wrapper">
+      <div class="info__wrapper__input-label">{{'inputMoney' | translate}}:</div>
+      <div>
+          <input (keyup)='checkForEnter($event?.key, moneyAmount)' class='info__wrapper__input-balance' (input)='""' min='0' max='2000' placeholder="$" #moneyAmount type="number"> 
+          <button
+          [ngStyle]="{'fontSize': language === 'ge'? '17px' : '19px'}"
+          [ngClass]="{'disabled': moneyAmount.value==='' || moneyAmount.value === '0', 'active': moneyAmount.value !== '' && moneyAmount.value !== '0'}"
+          [disabled]='moneyAmount.value === "" || moneyAmount.value === "0"'class='info__wrapper__input-submit' (click)='addMoney(moneyAmount)'>{{'submit' | translate}}</button>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+$green: #01AC2D; 
+$dark2: rgba(32,40,48,255);
+
+.header{
+  margin-bottom: 40px;
+  background-color: $dark2;
+  color: $green;
+  width: 100%;
+  text-align: center;
+  padding: 13px;
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  word-spacing: 9px;
+}

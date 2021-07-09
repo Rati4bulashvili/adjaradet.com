@@ -5,10 +5,11 @@ import { AccountService } from 'src/app/shared/services/account.service';
 import { BetDetailsService } from 'src/app/shared/services/bet-details.service';
 import { Bet } from '../../bet-details.model';
 import { DataService } from '../../matches-list/data-organise.service';
-import * as accountDataActions from '../../../shared/store/account-data/account-data.actions'
+import * as accountDataActions from '../../../navbar/store/account-data/account-data.actions'
 import { Auth } from 'src/app/shared/models/auth.model';
 import { SubSink } from 'subsink';
 import { AppState } from 'src/app/shared/store/app/app.reducer';
+import * as fromAuthStore from '../../../navbar/store/auth/auth.selectors'
 
 @Component({
   selector: 'app-bet-place',
@@ -24,7 +25,7 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
     private store: Store<AppState>,
   ) { }
 
-  authData: Auth;
+  email: string;
   private subs = new SubSink();
   betInfo: {odd: number, possWin: number, betCanBePlaced: boolean};
   odd: number;
@@ -34,8 +35,8 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() matches: Match[];
 
   ngOnInit(): void {
-    this.subs.sink = this.store.select('auth').subscribe((authData) => {
-      this.authData = authData;
+    this.subs.sink = this.store.select(fromAuthStore.getMailState).subscribe(email => {
+      this.email = email;
     })
   }
 
@@ -63,7 +64,7 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
   clearData(betAmount: HTMLInputElement){
     betAmount.value = '';
     this.inputCanBeFilled = false;
-    this.store.dispatch(new accountDataActions.UpdateBetPlacingState(this.inputCanBeFilled))
+    this.store.dispatch(accountDataActions.UpdateBetPlacingState({betIsGettingPlaced: this.inputCanBeFilled}))
     delete this.betDetails;
     delete this.betInfo;
     delete this.odd;
@@ -74,7 +75,7 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
     if(changes.matches.currentValue && changes.matches.currentValue !== changes.matches.previousValue){
       if(this.matches.length === 0){
         this.inputCanBeFilled = false;
-        this.store.dispatch(new accountDataActions.UpdateBetPlacingState(this.inputCanBeFilled))
+        this.store.dispatch(accountDataActions.UpdateBetPlacingState({betIsGettingPlaced: this.inputCanBeFilled}))
         if(this.inputBet){
           this.inputBet.nativeElement.value = '';
           this.clearData(this.inputBet.nativeElement)
@@ -82,7 +83,7 @@ export class BetPlaceComponent implements OnInit, OnChanges, OnDestroy {
       }
       else{
         this.inputCanBeFilled = true;
-        this.store.dispatch(new accountDataActions.UpdateBetPlacingState(this.inputCanBeFilled))
+        this.store.dispatch(accountDataActions.UpdateBetPlacingState({betIsGettingPlaced: this.inputCanBeFilled}))
         if(this.inputBet.nativeElement.value === ''){
           this.odd =  this.dataService.returnPossWin(this.inputBet.nativeElement, this.matches).odd;
         }

@@ -1,18 +1,4 @@
 $green: #01AC2D; 
-$dark2: rgba(32,40,48,255);
-
-.header{
-    margin-bottom: 40px;
-    background-color: $dark2;
-    color: $green;
-    width: 100%;
-    text-align: center;
-    padding: 13px;
-    font-size: 23px;
-    font-weight: bold;
-    letter-spacing: 4px;
-    word-spacing: 9px;
-}
 
 .info{
     display: flex;
@@ -91,11 +77,10 @@ $dark2: rgba(32,40,48,255);
             border: none;
             outline: none;
             cursor: default;
-            max-width: 120px;
+            max-width: 160px;
             font-size: 20px;
             color: black;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
         &__toggle-visibility{
@@ -103,6 +88,7 @@ $dark2: rgba(32,40,48,255);
             border: none;
             outline: none;
             cursor: pointer;
+            margin-left: auto;
             
             img{
                 vertical-align: middle;

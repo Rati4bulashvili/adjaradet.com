@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FullBet } from 'src/app/shared/models/full-bet.model';
 
 @Component({
   selector: 'app-bets-history-header',
@@ -13,6 +12,6 @@ export class BetsHistoryHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() betsHistory: FullBet[]
+  @Input() betsHistoryLength: number[]
 
 }

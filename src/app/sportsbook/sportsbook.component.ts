@@ -4,6 +4,7 @@ import { SubSink } from 'subsink';
 import { AccountData } from '../shared/models/account-data.model';
 import { AppState } from '../shared/store/app/app.reducer';
 import { CanComponentDeactivate } from '../shared/guards/can-deactivate-guard.service';
+import * as fromAccountData from '../navbar/store/account-data/account-data.selectors'
 
 @Component({
   selector: 'app-sportsbook',
@@ -18,7 +19,7 @@ export class SportsbookComponent implements OnInit, CanComponentDeactivate, OnDe
   ){}
 
   canDeactivate(){
-    if(this.accountData.placingBet){
+    if(this.placingBet){
       return confirm('Do You Want To Stop Placing Bet?')
     }
     else{
@@ -26,12 +27,12 @@ export class SportsbookComponent implements OnInit, CanComponentDeactivate, OnDe
     }
   }  
 
-  accountData: AccountData;
+  placingBet: boolean;
   private subs = new SubSink();
 
   ngOnInit(){
-    this.subs.sink = this.store.select('accountData').subscribe(accountData=>{
-      this.accountData = accountData;
+    this.subs.sink = this.store.select(fromAccountData.getPlacingBetState).subscribe(placingBet=>{
+      this.placingBet = placingBet
     })
   }
 

@@ -1,6 +1,6 @@
 <div class="history">
     <span class="history__header">
-        <app-bets-history-header [betsHistory]='betsHistory'></app-bets-history-header>
+        <app-bets-history-header [betsHistoryLength]='betsHistory?.length'></app-bets-history-header>
     </span>
 
     <app-bets-history-list [betsHistory]='betsHistory'></app-bets-history-list>

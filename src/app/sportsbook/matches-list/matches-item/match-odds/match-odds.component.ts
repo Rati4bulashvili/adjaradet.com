@@ -18,7 +18,6 @@ export class MatchOddsComponent implements OnInit{
   highlightsArr = [];
 
   ngOnInit(): void {
-    
     this.buttonHighlightService.highlightButtons.subscribe((matchesInBet: Match[])=>{
       this.highlightsArr = matchesInBet;
     })

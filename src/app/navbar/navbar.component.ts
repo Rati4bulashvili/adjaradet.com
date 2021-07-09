@@ -5,11 +5,11 @@ import { take, takeUntil } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import { ModalPurpose } from '../shared/enums/modal-purpose.enum';
 import { AccountData } from '../shared/models/account-data.model';
-import { Auth } from '../shared/models/auth.model';
 import { AccountService } from '../shared/services/account.service';
-import * as AccountDataActions from '../shared/store/account-data/account-data.actions'
+import * as AccountDataActions from './store/account-data/account-data.actions'
 import { AppState } from '../shared/store/app/app.reducer';
-import * as AuthActions from '../shared/store/auth/auth.actions'
+import * as AuthActions from './store/auth/auth.actions';
+import * as fromAuthStore from '../navbar/store/auth/auth.selectors'
 
 @Component({
   selector: 'app-navbar',
@@ -32,8 +32,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(
     private accountService: AccountService,
     private store: Store<AppState>,
-  ) {
-  }
+  ) {}
 
   showMessage = false;
   messageData: { message: string, error: boolean, state: string }
@@ -41,36 +40,58 @@ export class NavbarComponent implements OnInit, OnDestroy {
   autoCancelMessage(message: { message: string, error: boolean, state: string }) {
 
     interval(5000).pipe(take(1))
-      .subscribe(() => {
-        this.messageData = { message: message.message, error: message.error, state: 'inactive' }
-        interval(1000).pipe(take(1))
-          .subscribe(() => {
-            this.showMessage = false;
-          })
-      })
+    .subscribe(() => {
+      this.messageData = { message: message.message, error: message.error, state: 'inactive' }
+      interval(1000).pipe(take(1))
+        .subscribe(() => {
+          this.showMessage = false;
+        })
+    })
   }
 
   accountData: AccountData;
-  authData: Auth;
+  email: string;
   loggedOut = false;
   language: string;
   counter = 0;
+  modalpurpose: { login: string, register: string }
+
   ngOnInit(): void {
-    this.language = localStorage.getItem('language') || 'en';
 
-    this.subs.sink = this.store.select('auth').subscribe(authData => {
-      this.authData = authData;
+    this.subs.sink = this.store.select(fromAuthStore.getMailState).subscribe(email => {
+      this.email = email;
 
-      if (!authData?.email) {
+      if (email) {
         this.counter = 0;
       }
 
-      if (authData && this.counter === 0) {
-        this.store.dispatch(new AccountDataActions.GetBalanceData({ email: authData.email, loggingIn: true }))
-        this.store.dispatch(new AccountDataActions.GetBetsHistory({ email: authData.email, loggingIn: true }))
+      if (email && this.counter === 0) {
+        this.store.dispatch(AccountDataActions.GetBalanceData({ email: email, loggingIn: true }))
+        this.store.dispatch(AccountDataActions.GetBetsHistory({ email: email, loggingIn: true }))
         this.counter++;
       }
+
+      this.modalpurpose = ModalPurpose;
     });
+
+    this.language = localStorage.getItem('language') || 'en';
+
+    // this.subs.sink = this.store.select('auth').subscribe(authData => {
+    //   this.authData = authData;
+
+    //   if (!authData?.email) {
+    //     this.counter = 0;
+    //   }
+
+    //   if (authData && this.counter === 0) {
+    //     this.store.dispatch(AccountDataActions.GetBalanceData({ email: authData.email, loggingIn: true }))
+    //     this.store.dispatch(AccountDataActions.GetBetsHistory({ email: authData.email, loggingIn: true }))
+    //     this.counter++;
+    //   }
+
+    //   this.modalpurpose = ModalPurpose;
+      
+    // });
 
     this.subs.sink = this.store.select('accountData').subscribe(accountData => {
       this.accountData = accountData;
@@ -86,14 +107,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
       else {
         const notifier = new Subject<void>();
         interval(2500).pipe(takeUntil(notifier))
-          .subscribe(() => {
-            if (!this.showMessage) {
-              this.messageData = { message: message.message, error: message.error, state: 'active' }
-              this.showMessage = true;
-              this.autoCancelMessage(message);
-              notifier.next()
-            }
-          })
+        .subscribe(() => {
+          if (!this.showMessage) {
+            this.messageData = { message: message.message, error: message.error, state: 'active' }
+            this.showMessage = true;
+            this.autoCancelMessage(message);
+            notifier.next()
+          }
+        })
       }
     })
   }
@@ -109,7 +130,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onLogOut() {
     this.loggedOut = true;
-    this.store.dispatch(new AuthActions.LogOut())
+    this.store.dispatch(AuthActions.LogOut())
   }
 
 }

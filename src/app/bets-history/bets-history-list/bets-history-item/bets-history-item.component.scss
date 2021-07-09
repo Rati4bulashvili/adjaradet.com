@@ -84,6 +84,7 @@ $border: rgba(43,52,60,255);
     }
 
     &__poss-win{
+        // min-width: 225px;
         @media screen and (max-width: 800px) {
             min-width: 150px;
         }
@@ -109,7 +110,7 @@ $border: rgba(43,52,60,255);
     }
     &__bet-amount{
         @media screen and (min-width: 801px) {
-            min-width: 115px;
+            min-width: 125px;
         }
         @media screen and (max-width: 800px) {
             min-width: 75px;
